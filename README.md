@@ -2,7 +2,7 @@
 
 Repository with the exercises and projects built during the [Node.js Course](https://www.youtube.com/playlist?list=PLJ_KhUnlXUPtbtLwaxxUxHqvcNQndmI4B) by instructor **Victor Lima** (Guia do Programador).
 
-The course covers Node.js, Express, Handlebars, MySQL with Sequelize and MongoDB with Mongoose.
+The course covers Node.js, Express, Handlebars, MySQL with Sequelize and MongoDB with Mongoose. The Bootstrap framework was used to assist in building the interface.
 
 ## Contents
 
