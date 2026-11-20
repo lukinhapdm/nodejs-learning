@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title>Blog Node</title>
+
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&display=swap"> {{!-- Fonte dos títulos --}}
+		<link rel="stylesheet" href="/css/bootstrap.css">
+		<link rel="stylesheet" href="/css/style.css">
+	</head>
+	<body>
+
+		{{>_navbar}} {{!-- O sinal 'maior' refere a pasta partials --}}
+
+		<main class="container my-4">
+			{{#if error}}
+				<div class="alert alert-danger">{{error}}</div>
+			{{/if}}
+			{{>_msg}}
+			{{{body}}}
+		</main>
+
+		{{>_footer}}
+
+		{{!-- O bundle já inclui o Popper, necessário para o menu responsivo --}}
+		<script src="/js/bootstrap.bundle.js"></script>
+		<script src="/js/main.js"></script>
+	</body>
+</html>

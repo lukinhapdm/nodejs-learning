@@ -1,0 +1,126 @@
+/* Estilos próprios do blog (complementam o Bootstrap) */
+
+/* Paleta de cores do blog */
+:root {
+	--cor-primaria: #6d28d9;      /* Violeta */
+	--cor-primaria-escura: #4c1d95;
+	--cor-destaque: #22c55e;      /* Verde (referência ao Node.js) */
+	--cor-escura: #1e1b4b;        /* Índigo bem escuro (navbar e footer) */
+	--cor-fundo: #f3f0ff;         /* Lilás bem claro */
+	--gradiente: linear-gradient(135deg, #312e81 0%, #6d28d9 55%, #9333ea 100%);
+
+	/* Substitui a cor primária do Bootstrap pela cor do blog */
+	--bs-primary: #6d28d9;
+	--bs-primary-rgb: 109, 40, 217;
+	--bs-link-color: #6d28d9;
+	--bs-link-color-rgb: 109, 40, 217;
+	--bs-link-hover-color: #4c1d95;
+	--bs-link-hover-color-rgb: 76, 29, 149;
+}
+
+/* Base */
+html, body { height: 100%; }
+body { display: flex; flex-direction: column; background-color: var(--cor-fundo); }
+main { flex: 1; } /* Mantém o footer sempre no final da página */
+h1, h2, h3, h4, h5, .navbar-brand, .fonte-titulo { font-family: "Poppins", sans-serif; }
+
+/* Botões e formulários com as cores do blog */
+.btn-primary {
+	--bs-btn-bg: var(--cor-primaria); --bs-btn-border-color: var(--cor-primaria);
+	--bs-btn-hover-bg: var(--cor-primaria-escura); --bs-btn-hover-border-color: var(--cor-primaria-escura);
+	--bs-btn-active-bg: var(--cor-primaria-escura); --bs-btn-active-border-color: var(--cor-primaria-escura);
+}
+.btn-outline-primary {
+	--bs-btn-color: var(--cor-primaria); --bs-btn-border-color: var(--cor-primaria);
+	--bs-btn-hover-bg: var(--cor-primaria); --bs-btn-hover-border-color: var(--cor-primaria); --bs-btn-hover-color: #fff;
+	--bs-btn-active-bg: var(--cor-primaria-escura); --bs-btn-active-border-color: var(--cor-primaria-escura);
+}
+.btn-destaque { background: var(--cor-destaque); color: #052e16; font-weight: 600; border: 0; }
+.btn-destaque:hover { background: #16a34a; color: #fff; }
+.form-control:focus, .form-select:focus { border-color: #a78bfa; box-shadow: 0 0 0 .25rem rgba(109, 40, 217, .2); }
+
+/* Navbar e logo */
+.navbar-marca { background: var(--cor-escura); }
+.navbar .nav-link.active { color: #fff; font-weight: 600; }
+.logo-icone {
+	display: inline-flex; align-items: center; justify-content: center;
+	width: 34px; height: 34px; margin-right: .4rem; border-radius: 8px;
+	background: var(--cor-destaque); color: var(--cor-escura);
+	font-family: monospace; font-weight: 800; font-size: .95rem;
+}
+.texto-destaque { color: var(--cor-destaque); }
+.busca-navbar { max-width: 260px; }
+.busca-navbar .form-control { background: rgba(255, 255, 255, .1); border-color: rgba(255, 255, 255, .2); color: #fff; }
+.busca-navbar .form-control::placeholder { color: rgba(255, 255, 255, .55); }
+
+/* Banner da home */
+.hero { position: relative; overflow: hidden; background: var(--gradiente); color: #fff; }
+.hero::after { /* Brilho verde decorativo */
+	content: ""; position: absolute; width: 420px; height: 420px; right: -120px; top: -160px;
+	background: radial-gradient(circle, rgba(34, 197, 94, .45), transparent 65%); pointer-events: none;
+}
+.hero .container-fluid { position: relative; z-index: 1; }
+
+/* Janela de código decorativa */
+.janela-codigo { background: #0f172a; border-radius: .75rem; box-shadow: 0 1.5rem 3rem rgba(0, 0, 0, .35); font-family: monospace; font-size: .9rem; }
+.janela-codigo .barra { padding: .6rem .9rem; border-bottom: 1px solid rgba(255, 255, 255, .08); }
+.janela-codigo .barra span { display: inline-block; width: 11px; height: 11px; border-radius: 50%; margin-right: 5px; }
+.janela-codigo pre { margin: 0; padding: 1rem 1.2rem; color: #e2e8f0; white-space: pre; }
+.cod-palavra { color: #c084fc; } .cod-texto { color: #4ade80; } .cod-funcao { color: #60a5fa; } .cod-comentario { color: #64748b; }
+
+/* Títulos de seção com barra colorida */
+.titulo-secao { position: relative; padding-bottom: .5rem; margin-bottom: 1.5rem; }
+.titulo-secao::after { content: ""; position: absolute; left: 0; bottom: 0; width: 56px; height: 4px; border-radius: 4px; background: linear-gradient(90deg, var(--cor-primaria), var(--cor-destaque)); }
+
+/* Cards */
+.card { border: 0; border-radius: .75rem; box-shadow: 0 2px 6px rgba(49, 46, 129, .08); }
+.card-hover { transition: transform .15s ease, box-shadow .15s ease; }
+.card-hover:hover { transform: translateY(-4px); box-shadow: 0 .75rem 1.5rem rgba(49, 46, 129, .15); }
+.card-post { border-top: 4px solid var(--cat-cor, var(--cor-primaria)); }
+.card-post .card-title a { color: inherit; text-decoration: none; }
+.card-post .card-title a:hover { color: var(--cor-primaria); }
+.post-meta { font-size: .875rem; }
+
+/* Cores das categorias (definidas pelo helper corCategoria) */
+.cat-0 { --cat-cor: #6d28d9; } .cat-1 { --cat-cor: #16a34a; } .cat-2 { --cat-cor: #ea580c; }
+.cat-3 { --cat-cor: #db2777; } .cat-4 { --cat-cor: #0284c7; } .cat-5 { --cat-cor: #ca8a04; }
+.badge-cat { background: var(--cat-cor, var(--cor-primaria)); color: #fff; }
+.icone-cat {
+	display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0;
+	width: 48px; height: 48px; border-radius: .75rem; background: var(--cat-cor); color: #fff;
+	font-family: "Poppins", sans-serif; font-weight: 700; font-size: 1.25rem;
+}
+
+/* Barra lateral */
+.sidebar { top: 1.5rem; }
+.card-gradiente { background: var(--gradiente); color: #fff; }
+.card-gradiente .card-text { color: rgba(255, 255, 255, .8); }
+
+/* Página da postagem */
+.artigo { max-width: 860px; }
+.artigo-topo { background: var(--gradiente); color: #fff; border-radius: .75rem .75rem 0 0; }
+.artigo-topo .lead, .artigo-topo .post-meta { color: rgba(255, 255, 255, .8); }
+.conteudo { white-space: pre-line; line-height: 1.8; font-size: 1.05rem; } /* Preserva as quebras de linha do conteúdo */
+
+/* Login e registro */
+.form-container { max-width: 480px; }
+.card-auth .topo { background: var(--gradiente); color: #fff; border-radius: .75rem .75rem 0 0; }
+.card-auth .topo p { color: rgba(255, 255, 255, .8); }
+
+/* Painel admin */
+.stat-card { color: #fff; }
+.stat-card .display-6 { font-weight: 700; font-family: "Poppins", sans-serif; }
+.stat-card p { color: rgba(255, 255, 255, .85); }
+.stat-violeta { background: linear-gradient(135deg, #6d28d9, #9333ea); }
+.stat-verde { background: linear-gradient(135deg, #15803d, #22c55e); }
+.stat-laranja { background: linear-gradient(135deg, #c2410c, #f97316); }
+.table thead th { background: #ede9fe; color: var(--cor-escura); border-bottom: 0; }
+
+/* Página 404 */
+.erro-404 {
+	font-family: "Poppins", sans-serif; font-size: 7rem; font-weight: 800; line-height: 1;
+	background: var(--gradiente); -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+
+/* Footer */
+.footer-marca { background: var(--cor-escura); border-top: 4px solid; border-image: linear-gradient(90deg, var(--cor-primaria), var(--cor-destaque)) 1; }

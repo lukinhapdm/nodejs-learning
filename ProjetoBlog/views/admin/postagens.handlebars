@@ -1,0 +1,39 @@
+<div class="d-flex justify-content-between align-items-center mb-4">
+	<h2 class="titulo-secao mb-0">Postagens</h2>
+	<a href="/admin/postagens/add" class="btn btn-primary">Nova Postagem</a>
+</div>
+
+<div class="card">
+	<div class="table-responsive">
+		<table class="table table-hover align-middle mb-0">
+			<thead>
+				<tr>
+					<th>Título</th>
+					<th>Categoria</th>
+					<th>Slug</th>
+					<th>Data</th>
+					<th class="text-end">Ações</th>
+				</tr>
+			</thead>
+			<tbody>
+			{{#each postagens}}
+				<tr>
+					<td>
+						<strong>{{titulo}}</strong><br>
+						<small class="text-body-secondary">{{descricao}}</small>
+					</td>
+					<td><span class="badge badge-cat {{corCategoria categoria.nome}}">{{categoria.nome}}</span></td>
+					<td><code>{{slug}}</code></td>
+					<td>{{formatDate date}}</td>
+					<td class="text-end text-nowrap">
+						<a href="/admin/postagens/edit/{{_id}}" class="btn btn-sm btn-outline-primary">Editar</a>
+						<a href="/admin/postagens/delete/{{_id}}" class="btn btn-sm btn-outline-danger" data-confirmar="Deseja deletar a postagem &quot;{{titulo}}&quot;?">Deletar</a>
+					</td>
+				</tr>
+			{{else}}
+				<tr><td colspan="5" class="text-center text-body-secondary py-4">Nenhuma postagem registrada!</td></tr>
+			{{/each}}
+			</tbody>
+		</table>
+	</div>
+</div>

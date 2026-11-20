@@ -1,0 +1,20 @@
+<nav aria-label="breadcrumb">
+	<ol class="breadcrumb">
+		<li class="breadcrumb-item"><a href="/">Home</a></li>
+		<li class="breadcrumb-item"><a href="/categorias">Categorias</a></li>
+		<li class="breadcrumb-item active" aria-current="page">{{categoria.nome}}</li>
+	</ol>
+</nav>
+<h2 class="titulo-secao">{{categoria.nome}}</h2>
+
+<div class="row g-4">
+{{#each postagens}}
+	<div class="col-md-6 col-lg-4">
+		{{>_postcard}}
+	</div>
+{{else}}
+	<div class="col-12">
+		<div class="card"><div class="card-body text-center text-body-secondary py-5">Nenhuma postagem publicada dessa categoria!</div></div>
+	</div>
+{{/each}}
+</div>

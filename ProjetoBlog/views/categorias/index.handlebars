@@ -1,0 +1,22 @@
+<h2 class="titulo-secao mb-2">Categorias</h2>
+<p class="text-body-secondary mb-4">Escolha uma categoria para ver as postagens relacionadas.</p>
+
+<div class="row g-4">
+	{{#each categorias}}
+		<div class="col-sm-6 col-lg-4">
+			<a href="/categorias/{{slug}}" class="card card-hover h-100 text-decoration-none {{corCategoria nome}}">
+				<div class="card-body d-flex align-items-center gap-3">
+					<span class="icone-cat">{{inicial nome}}</span>
+					<div>
+						<h5 class="mb-0 text-body">{{nome}}</h5>
+						<small class="text-body-secondary">{{total}} {{#if (eq total 1)}}postagem{{else}}postagens{{/if}}</small>
+					</div>
+				</div>
+			</a>
+		</div>
+	{{else}}
+		<div class="col-12">
+			<div class="card"><div class="card-body text-center text-body-secondary py-5">Nenhuma categoria registrada!</div></div>
+		</div>
+	{{/each}}
+</div>

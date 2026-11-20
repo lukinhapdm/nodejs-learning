@@ -1,0 +1,22 @@
+<div class="form-container mx-auto">
+	<div class="card card-auth">
+		<div class="topo p-4">
+			<h2 class="mb-1">Login</h2>
+			<p class="mb-0">Entre com seu e-mail e senha.</p>
+		</div>
+		<div class="card-body p-4">
+			<form action="/usuarios/login" method="POST">
+				<div class="mb-3">
+					<label for="email" class="form-label">E-mail</label>
+					<input type="email" id="email" name="email" placeholder="seu@email.com" class="form-control" required>
+				</div>
+				<div class="mb-4">
+					<label for="senha" class="form-label">Senha</label>
+					<input type="password" id="senha" name="senha" placeholder="Senha" class="form-control" required>
+				</div>
+				<button class="btn btn-primary w-100" type="submit">Entrar</button>
+			</form>
+			<p class="text-center mt-3 mb-0"><small>Não tem conta? <a href="/usuarios/registro">Cadastre-se</a></small></p>
+		</div>
+	</div>
+</div>

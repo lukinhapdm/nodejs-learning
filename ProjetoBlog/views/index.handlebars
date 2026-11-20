@@ -1,0 +1,74 @@
+<div class="hero p-4 p-lg-5 mb-5 rounded-4"> {{!-- Jumbotron --}}
+	<div class="container-fluid py-lg-3">
+		<div class="row align-items-center g-5">
+			<div class="col-lg-7">
+				<span class="badge rounded-pill text-bg-light text-uppercase mb-3">Node.js &middot; Express &middot; MongoDB</span>
+				<h1 class="display-5 fw-bold">Seja Bem-vindo ao Blog!</h1>
+				<p class="fs-5 opacity-75">Blogs são páginas on-line, atualizadas com frequência, que podem ser diários pessoais, periódicos ou empresariais. Dessa forma, são formas de comunicação de pessoas e de instituições com o mundo.</p>
+				<div class="d-flex flex-wrap gap-2">
+					{{#unless user}}
+						<a href="/usuarios/registro" class="btn btn-destaque btn-lg">Criar Conta</a>
+					{{/unless}}
+					<a href="/categorias" class="btn btn-outline-light btn-lg">Ver Categorias</a>
+				</div>
+			</div>
+			{{!-- Janela de código decorativa (aparece só em telas grandes) --}}
+			<div class="col-lg-5 d-none d-lg-block">
+				<div class="janela-codigo">
+					<div class="barra"><span style="background:#ef4444"></span><span style="background:#eab308"></span><span style="background:#22c55e"></span></div>
+<pre><span class="cod-comentario">// app.js</span>
+<span class="cod-palavra">const</span> express = <span class="cod-funcao">require</span>(<span class="cod-texto">"express"</span>)
+<span class="cod-palavra">const</span> app = <span class="cod-funcao">express</span>()
+
+app.<span class="cod-funcao">get</span>(<span class="cod-texto">"/"</span>, (req, res) => {
+  res.<span class="cod-funcao">render</span>(<span class="cod-texto">"index"</span>)
+})
+
+app.<span class="cod-funcao">listen</span>(<span class="cod-texto">8081</span>)</pre>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="row g-4">
+	{{!-- Postagens --}}
+	<div class="col-lg-8">
+		<h2 class="h3 titulo-secao">Posts Recentes</h2>
+		<div class="row g-4">
+		{{#each postagens}}
+			<div class="col-md-6">
+				{{>_postcard}}
+			</div>
+		{{else}}
+			<div class="col-12">
+				<div class="card"><div class="card-body text-center text-body-secondary py-5">Nenhuma postagem registrada!</div></div>
+			</div>
+		{{/each}}
+		</div>
+	</div>
+
+	{{!-- Barra lateral --}}
+	<aside class="col-lg-4">
+		<div class="sidebar position-sticky">
+			<div class="card mb-4">
+				<div class="card-body">
+					<h5 class="card-title titulo-secao">Categorias</h5>
+					<div class="d-flex flex-wrap gap-2">
+						{{#each categorias}}
+							<a href="/categorias/{{slug}}" class="badge badge-cat fs-6 fw-medium text-decoration-none {{corCategoria nome}}">{{nome}}</a>
+						{{else}}
+							<small class="text-body-secondary">Nenhuma categoria registrada!</small>
+						{{/each}}
+					</div>
+				</div>
+			</div>
+			<div class="card card-gradiente">
+				<div class="card-body">
+					<h5 class="card-title">Sobre o blog</h5>
+					<p class="card-text mb-0">Projeto desenvolvido durante o Curso de Node.js, usando Express, Handlebars e MongoDB.</p>
+				</div>
+			</div>
+		</div>
+	</aside>
+</div>

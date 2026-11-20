@@ -1,0 +1,40 @@
+<h2 class="titulo-secao">Usuários</h2>
+
+<div class="card">
+	<div class="table-responsive">
+		<table class="table table-hover align-middle mb-0">
+			<thead>
+				<tr>
+					<th>Nome</th>
+					<th>E-mail</th>
+					<th>Perfil</th>
+					<th class="text-end">Ações</th>
+				</tr>
+			</thead>
+			<tbody>
+			{{#each usuarios}}
+				<tr>
+					<td><strong>{{nome}}</strong></td>
+					<td>{{email}}</td>
+					<td>
+						{{#if (eq eAdmin 1)}}
+							<span class="badge text-bg-dark">Admin</span>
+						{{else}}
+							<span class="badge text-bg-light border">Usuário</span>
+						{{/if}}
+					</td>
+					<td class="text-end text-nowrap">
+						<a href="/admin/usuarios/edit/{{_id}}" class="btn btn-sm btn-outline-primary">Editar</a>
+						<form action="/admin/usuarios/delete" method="POST" class="d-inline" data-confirmar="Deseja deletar o usuário &quot;{{nome}}&quot;?">
+							<input type="hidden" name="id" value="{{_id}}">
+							<button type="submit" class="btn btn-sm btn-outline-danger">Deletar</button>
+						</form>
+					</td>
+				</tr>
+			{{else}}
+				<tr><td colspan="4" class="text-center text-body-secondary py-4">Nenhum usuário registrado!</td></tr>
+			{{/each}}
+			</tbody>
+		</table>
+	</div>
+</div>

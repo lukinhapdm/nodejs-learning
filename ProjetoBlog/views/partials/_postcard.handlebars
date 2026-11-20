@@ -1,0 +1,14 @@
+{{!-- Card de postagem reutilizado na home, na busca e nas categorias --}}
+<div class="card card-post card-hover h-100 {{corCategoria categoria.nome}}">
+	<div class="card-body d-flex flex-column">
+		{{#if categoria.nome}}
+			<a href="/categorias/{{categoria.slug}}" class="badge badge-cat text-decoration-none align-self-start mb-2">{{categoria.nome}}</a>
+		{{/if}}
+		<h4 class="card-title h5"><a href="/postagem/{{slug}}">{{titulo}}</a></h4>
+		<p class="card-text text-body-secondary">{{descricao}}</p>
+		<div class="mt-auto d-flex justify-content-between align-items-center">
+			<small class="text-body-secondary post-meta">{{formatDate date}} &middot; {{tempoLeitura conteudo}} min de leitura</small>
+			<a href="/postagem/{{slug}}" class="btn btn-sm btn-outline-primary">Leia Mais</a>
+		</div>
+	</div>
+</div>

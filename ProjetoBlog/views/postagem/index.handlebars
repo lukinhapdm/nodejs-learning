@@ -1,0 +1,35 @@
+<div class="artigo mx-auto"> {{!-- Limita a largura do texto para facilitar a leitura --}}
+{{!-- Caminho de navegação (breadcrumb) --}}
+<nav aria-label="breadcrumb">
+	<ol class="breadcrumb">
+		<li class="breadcrumb-item"><a href="/">Home</a></li>
+		<li class="breadcrumb-item"><a href="/categorias/{{postagem.categoria.slug}}">{{postagem.categoria.nome}}</a></li>
+		<li class="breadcrumb-item active" aria-current="page">{{postagem.titulo}}</li>
+	</ol>
+</nav>
+
+<article class="card">
+	{{!-- Topo colorido com as informações da postagem --}}
+	<header class="artigo-topo p-4 p-lg-5">
+		<a href="/categorias/{{postagem.categoria.slug}}" class="badge text-bg-light text-decoration-none mb-3">{{postagem.categoria.nome}}</a>
+		<h1 class="fw-bold">{{postagem.titulo}}</h1>
+		<p class="lead">{{postagem.descricao}}</p>
+		<p class="post-meta mb-0">Publicado em {{formatDate postagem.date}} &middot; {{tempoLeitura postagem.conteudo}} min de leitura</p>
+	</header>
+	<div class="card-body p-4 p-lg-5">
+		<div class="conteudo">{{postagem.conteudo}}</div>
+	</div>
+</article>
+
+{{!-- Postagens da mesma categoria --}}
+{{#if relacionadas.length}}
+	<h3 class="h4 mt-5 titulo-secao">Mais em {{postagem.categoria.nome}}</h3>
+	<div class="row g-4">
+		{{#each relacionadas}}
+			<div class="col-md-6">
+				{{>_postcard}}
+			</div>
+		{{/each}}
+	</div>
+{{/if}}
+</div>
