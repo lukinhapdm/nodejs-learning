@@ -1,121 +1,121 @@
 # ProjetoBlog
 
-Blog com painel administrativo desenvolvido como projeto final do **Curso de Node.js** do professor **Victor Lima** (Guia do Programador).
+Blog with an admin panel, built as the final project of the **Node.js Course** by instructor **Victor Lima** (Guia do Programador).
 
-A aplicação permite cadastrar categorias e postagens por meio de uma área restrita a administradores, além de registro, login e logout de usuários.
+The application lets administrators create categories and posts through a restricted area, and also supports user registration, login and logout.
 
-## Tecnologias
+## Technologies
 
-| Tecnologia | Uso |
+| Technology | Purpose |
 | --- | --- |
-| [Node.js](https://nodejs.org) | Plataforma de execução |
-| [Express](https://expressjs.com) | Servidor e rotas |
-| [Express Handlebars](https://github.com/express-handlebars/express-handlebars) | Template engine das views |
-| [MongoDB](https://www.mongodb.com) + [Mongoose](https://mongoosejs.com) | Banco de dados e models |
-| [Passport](https://www.passportjs.org) + passport-local | Autenticação |
-| [bcryptjs](https://github.com/dcodeIO/bcrypt.js) | Hash das senhas |
-| express-session + connect-flash | Sessões e mensagens de feedback |
-| [Bootstrap 5](https://getbootstrap.com) | Estilização |
-| [Poppins](https://fonts.google.com/specimen/Poppins) (Google Fonts) | Fonte dos títulos |
+| [Node.js](https://nodejs.org) | Runtime |
+| [Express](https://expressjs.com) | Server and routes |
+| [Express Handlebars](https://github.com/express-handlebars/express-handlebars) | View template engine |
+| [MongoDB](https://www.mongodb.com) + [Mongoose](https://mongoosejs.com) | Database and models |
+| [Passport](https://www.passportjs.org) + passport-local | Authentication |
+| [bcryptjs](https://github.com/dcodeIO/bcrypt.js) | Password hashing |
+| express-session + connect-flash | Sessions and feedback messages |
+| [Bootstrap 5](https://getbootstrap.com) | Styling |
+| [Poppins](https://fonts.google.com/specimen/Poppins) (Google Fonts) | Heading font |
 
-## Funcionalidades
+## Features
 
-**Área pública**
-- Home com as postagens mais recentes e barra lateral de categorias
-- Busca de postagens pelo título ou descrição
-- Página de cada postagem (acessada pelo slug) com tempo de leitura e postagens relacionadas da mesma categoria
-- Listagem de categorias com a quantidade de postagens de cada uma
-- Registro, login e logout de usuários, com menu do usuário na navbar
-- Página 404 para rotas inexistentes
-- Layout responsivo (funciona no celular)
+**Public area**
+- Home page with the latest posts and a categories sidebar
+- Search posts by title or description
+- Individual post page (accessed by slug) with reading time and related posts from the same category
+- Category list with the number of posts in each
+- User registration, login and logout, with a user menu in the navbar
+- 404 page for non-existent routes
+- Responsive layout (works on mobile)
 
-**Área administrativa** (`/admin`, apenas para usuários admin)
-- Dashboard com o total de postagens, categorias e usuários e as últimas postagens
-- CRUD de categorias
-- CRUD de postagens
-- Slug gerado automaticamente a partir do título/nome
-- Confirmação antes de deletar
-- Listagem, edição e exclusão de usuários *(extra, além do curso)*
+**Admin area** (`/admin`, admin users only)
+- Dashboard with total posts, categories and users, plus the latest posts
+- Category CRUD
+- Post CRUD
+- Slug automatically generated from the title/name
+- Confirmation before deleting
+- Listing, editing and deleting users *(extra, beyond the course)*
 
-## Telas
+## Screenshots
 
-| Home | Postagem |
+| Home | Post |
 | --- | --- |
-| ![Home](docs/screenshots/home.png) | ![Página da postagem](docs/screenshots/postagem.png) |
+| ![Home](docs/screenshots/home.png) | ![Post page](docs/screenshots/postagem.png) |
 
-| Painel admin | Painel admin: postagens |
+| Admin panel | Admin panel: posts |
 | --- | --- |
-| ![Dashboard do painel admin](docs/screenshots/admin.png) | ![Lista de postagens no painel admin](docs/screenshots/admin-postagens.png) |
+| ![Admin panel dashboard](docs/screenshots/admin.png) | ![Post list in the admin panel](docs/screenshots/admin-postagens.png) |
 
-> As imagens usam dados de exemplo.
+> The screenshots use sample data.
 
-## Estrutura de pastas
+## Folder structure
 
 ```
 ProjetoBlog/
-├── app.js              # Arquivo principal: configurações, rotas públicas e servidor
+├── app.js              # Main file: settings, public routes and server
 ├── config/
-│   └── auth.js         # Estratégia de login do Passport
+│   └── auth.js         # Passport login strategy
 ├── helpers/
-│   ├── eAdmin.js       # Middleware que restringe rotas a administradores
-│   └── handlebars.js   # Helpers usados nas views (data, tempo de leitura...)
+│   ├── eAdmin.js       # Middleware that restricts routes to administrators
+│   └── handlebars.js   # Helpers used in the views (date, reading time...)
 ├── models/
 │   ├── Categoria.js
 │   ├── Postagem.js
 │   └── Usuario.js
 ├── routes/
-│   ├── admin.js        # Rotas /admin (categorias, postagens e usuários)
-│   └── usuario.js      # Rotas /usuarios (registro, login e logout)
-├── docs/screenshots/   # Imagens usadas neste README
-├── public/             # Arquivos estáticos (Bootstrap, css/style.css e js/main.js)
-└── views/              # Templates Handlebars
-    ├── layouts/        # Layout principal (main)
-    ├── partials/       # Navbar, footer e mensagens
+│   ├── admin.js        # /admin routes (categories, posts and users)
+│   └── usuario.js      # /usuarios routes (registration, login and logout)
+├── docs/screenshots/   # Images used in this README
+├── public/             # Static files (Bootstrap, css/style.css and js/main.js)
+└── views/              # Handlebars templates
+    ├── layouts/        # Main layout (main)
+    ├── partials/       # Navbar, footer and messages
     ├── admin/
     ├── categorias/
     ├── postagem/
     └── usuarios/
 ```
 
-## Rotas
+## Routes
 
-| Método | Rota | Descrição |
+| Method | Route | Description |
 | --- | --- | --- |
-| GET | `/` | Home com as postagens |
-| GET | `/busca?q=termo` | Busca de postagens |
-| GET | `/postagem/:slug` | Página da postagem |
-| GET | `/categorias` | Lista de categorias |
-| GET | `/categorias/:slug` | Postagens de uma categoria |
-| GET/POST | `/usuarios/registro` | Registro de usuário |
+| GET | `/` | Home page with posts |
+| GET | `/busca?q=termo` | Post search |
+| GET | `/postagem/:slug` | Post page |
+| GET | `/categorias` | Category list |
+| GET | `/categorias/:slug` | Posts in a category |
+| GET/POST | `/usuarios/registro` | User registration |
 | GET/POST | `/usuarios/login` | Login |
 | GET | `/usuarios/logout` | Logout |
-| GET | `/admin` | Painel administrativo |
-| GET | `/admin/categorias` | Lista de categorias |
-| GET | `/admin/categorias/add` | Formulário de nova categoria |
-| POST | `/admin/categorias/new` | Cadastra categoria |
-| GET | `/admin/categorias/edit/:id` | Formulário de edição |
-| POST | `/admin/categorias/edit` | Salva a edição |
-| POST | `/admin/categorias/delete` | Deleta categoria |
-| GET | `/admin/postagens` | Lista de postagens |
-| GET | `/admin/postagens/add` | Formulário de nova postagem |
-| POST | `/admin/postagens/new` | Cadastra postagem |
-| GET | `/admin/postagens/edit/:id` | Formulário de edição |
-| POST | `/admin/postagens/edit` | Salva a edição |
-| GET | `/admin/postagens/delete/:id` | Deleta postagem |
-| GET | `/admin/usuarios` | Lista de usuários |
-| GET | `/admin/usuarios/edit/:id` | Formulário de edição |
-| POST | `/admin/usuarios/edit` | Salva a edição |
-| POST | `/admin/usuarios/delete` | Deleta usuário |
+| GET | `/admin` | Admin panel |
+| GET | `/admin/categorias` | Category list |
+| GET | `/admin/categorias/add` | New category form |
+| POST | `/admin/categorias/new` | Creates category |
+| GET | `/admin/categorias/edit/:id` | Edit form |
+| POST | `/admin/categorias/edit` | Saves changes |
+| POST | `/admin/categorias/delete` | Deletes category |
+| GET | `/admin/postagens` | Post list |
+| GET | `/admin/postagens/add` | New post form |
+| POST | `/admin/postagens/new` | Creates post |
+| GET | `/admin/postagens/edit/:id` | Edit form |
+| POST | `/admin/postagens/edit` | Saves changes |
+| GET | `/admin/postagens/delete/:id` | Deletes post |
+| GET | `/admin/usuarios` | User list |
+| GET | `/admin/usuarios/edit/:id` | Edit form |
+| POST | `/admin/usuarios/edit` | Saves changes |
+| POST | `/admin/usuarios/delete` | Deletes user |
 
-## Como executar
+## How to run
 
-### Pré-requisitos
-- [Node.js](https://nodejs.org) instalado
-- [MongoDB](https://www.mongodb.com/try/download/community) rodando localmente na porta padrão (`27017`)
+### Prerequisites
+- [Node.js](https://nodejs.org) installed
+- [MongoDB](https://www.mongodb.com/try/download/community) running locally on the default port (`27017`)
 
-### Passos
+### Steps
 
-1. Entre na pasta do projeto e instale as dependências:
+1. Go to the project folder and install the dependencies:
 
 ```bash
 cd ProjetoBlog
@@ -125,26 +125,26 @@ cd ProjetoBlog
 npm install
 ```
 
-2. Inicie o servidor:
+2. Start the server:
 
 ```bash
 npm start
 ```
 
-3. Acesse <http://localhost:8081>.
+3. Open <http://localhost:8081>.
 
-O banco `blogapp` é criado automaticamente pelo MongoDB na primeira gravação.
+The `blogapp` database is created automatically by MongoDB on the first write.
 
-### Criando um administrador
+### Creating an administrator
 
-Todo usuário é criado como comum (`eAdmin: 0`). Para liberar o acesso ao painel `/admin`, registre um usuário pelo site e altere o campo no MongoDB:
+Every user is created as a regular user (`eAdmin: 0`). To grant access to the `/admin` panel, register a user through the site and change the field in MongoDB:
 
 ```bash
-mongosh blogapp --eval 'db.usuarios.updateOne({email: "seu@email.com"}, {$set: {eAdmin: 1}})'
+mongosh blogapp --eval 'db.usuarios.updateOne({email: "your@email.com"}, {$set: {eAdmin: 1}})'
 ```
 
-Depois, faça logout e login novamente.
+Then log out and log in again.
 
-## Créditos
+## Credits
 
-Projeto desenvolvido acompanhando o [Curso de Node.js](https://www.youtube.com/playlist?list=PLJ_KhUnlXUPtbtLwaxxUxHqvcNQndmI4B) do professor Victor Lima.
+Project built following the [Node.js Course](https://www.youtube.com/playlist?list=PLJ_KhUnlXUPtbtLwaxxUxHqvcNQndmI4B) by instructor Victor Lima.
